@@ -7,13 +7,13 @@
 
 <h2>Would you like to do this job?</h2>
 <hr />
-@using (Html.BeginForm())
-{
-    @Html.HiddenFor(model => model.JobId)
-    @Html.HiddenFor(model => model.Title)
-    @Html.HiddenFor(model => model.Description)
+<form action="NewDestination" class="first">
+    <input type="hidden" name="Title" />
+    <input type="hidden" name="Description" />
+    <input type="hidden" name="JobId" />
 
     <h4>@Model.Title</h4>
     <input type="submit" value="Claim This Job" />
-}
-<p>@Html.ActionLink("Back to list", "Index")</p>
+</form>
+
+@Html.ActionLink("Back to list", "Index")
