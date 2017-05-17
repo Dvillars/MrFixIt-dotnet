@@ -1,8 +1,17 @@
 ﻿var test = "it works";
 
 $(document).ready(function () {
-    $('.first').submit(function (event) {
-        event.preventDefault();
-        console.log("df;akjsdhg;ai;sdh gi;hdgf")
+    $('.claim').click(function () {
+        var id = this.id;
+        $.ajax({
+            type: 'GET',
+            data: { theId: id },
+            url: '/Jobs/Claimed/theId',
+            success: function (result) {
+                console.log(result);
+                $('#claimed' + result).text('You claimed this task!');
+                location.reload();
+            }
+        })
     });
 });
