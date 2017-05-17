@@ -13,8 +13,36 @@
         <h3>Your Current Jobs:</h3>
         @foreach (var Job in Model.Jobs)
         {
-            <h5>@Job.Title</h5>
-
+            <hr>
+            <div class="@(Job.Completed)">
+                <h3>@Job.Title</h3>
+                @if (@Job.Completed == true)
+                {
+                    <p>Completed</p>
+                }
+                else if (@Job.Pending == true)
+                {
+                    <p>Active</p>
+                }
+                else
+                {
+                    <p id="pending@(Job.JobId)">Pending</p>
+                }
+                @if (@Job.Completed == false)
+                {
+                    <div class="completion">
+                        @if (@Job.Completed == false && @Job.Pending == true)
+                        {
+                            <button class="complete" id="@Job.JobId">Complete</button>
+                        }
+                        @if (@Job.Pending == false)
+                        {
+                            <button class="active" id="@Job.JobId">Active</button>
+                        }
+                    </div>
+                }
+            </div>
+            <hr>
         }
         @if (Model.Avaliable)
         {
@@ -26,3 +54,8 @@
         }
     </div>
 }
+
+
+
+
+
